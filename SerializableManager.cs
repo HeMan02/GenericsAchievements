@@ -55,7 +55,7 @@ public static class SerializableManager<T> where T : class
             sd.data = data;
             dicSerializableObj.Remove(data.GetType());
             dicSerializableObj.Add(data.GetType(), sd);
-            //Debug.Log("Oggetto già presente nel dictionary");
+            //Debug.Log("Object inside dictionary");
         }
     }
 
@@ -76,19 +76,16 @@ public static class SerializableManager<T> where T : class
         ListSaveData<T> objSaved = JsonUtility.FromJson<ListSaveData<T>>(jsonString);
 
         listObj = new List<object>();
-        // Istanzio oggetto ma non serve, devo richiamare action
         for (int i = 0; i < objSaved.listData.Count; i++)
         {
             listObj.Add(objSaved.listData[i].GetObj());
         }
-
-        //da  qua richiamare evento attivazione achievemnts
+        
         return listObj;
     }
 
     public static void GenerateJsonData()
     {
-        //Debug.LogError("PATH: " + pathOutputJson);
         ListSaveData<T> list = new ListSaveData<T>();
         list.listData = new List<SaveData<T>>();
         foreach (Type key in dicSerializableObj.Keys)
