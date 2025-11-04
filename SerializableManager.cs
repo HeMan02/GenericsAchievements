@@ -9,9 +9,7 @@ public static class SerializableManager<T> where T : class
     private static string pathOutputJson = Application.persistentDataPath;
     private static Dictionary<Type, SaveData<T>> dicSerializableObj = new Dictionary<Type, SaveData<T>>();
     private static List<object> listObj = new List<object>();
-
-    // Application.persistentDataPath per path in build
-
+    
     public interface ISerializable
     {
         object GetObj();
@@ -57,7 +55,7 @@ public static class SerializableManager<T> where T : class
             sd.data = data;
             dicSerializableObj.Remove(data.GetType());
             dicSerializableObj.Add(data.GetType(), sd);
-            //Debug.Log("Oggetto gi‡ presente nel dictionary");
+            //Debug.Log("Oggetto gi√† presente nel dictionary");
         }
     }
 
